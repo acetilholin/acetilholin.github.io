@@ -47,12 +47,12 @@ body {
     padding-right: .8rem;
 }
 .navbar-nav .nav-link {
-    color: #ed1c24;
+    color: #586168;
     padding-top: .8rem;
 }
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link:hover {
-    color: #586168;
+    color: #ed1c24;
 }
 .navbar.solid {
     background: rgba(0,0,0,0.99) !important;
@@ -190,7 +190,7 @@ h3.heading {
     color: #586168;
 }
 .shade:hover {
-   color: #c4191e;
+    color: #c4191e;
 }
 .owl-dot.active span,
 .owl-dot:hover span {
@@ -252,4 +252,29 @@ footer textarea {
 hr.socket {
     border-top: .1rem solid black;
     width: 100%;
+}
+/* Scroller */
+.scroller {
+    color: #ed1c24;
+    bottom: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+.scroller:hover {
+    color: #c4191e;
+}
+/* mobile version */
+
+@media (max-width: 800px) {
+    .navbar-nav .nav-link {
+        color: #ed1c24;
+        padding-top: .8rem;
+    }
+    .navbar-nav .nav-link.active,
+    .navbar-nav .nav-link:hover {
+        color: #586168;
+    }
 }
