@@ -253,6 +253,12 @@ hr.socket {
     border-top: .1rem solid black;
     width: 100%;
 }
+footer .form-check-input {
+    margin-left: 0;
+}
+.extra-space {
+    margin-left: 1rem;
+}
 /* Scroller */
 .scroller {
     color: #ed1c24;

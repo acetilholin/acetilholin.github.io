@@ -102,8 +102,6 @@ $(document).ready(function(){
     );
 });
 
-
-
 $(document).ready(function() {
     $(window).scroll(function() {
         if ($(this).scrollTop() > 500) {
@@ -113,3 +111,17 @@ $(document).ready(function() {
         }
     });
 });
+
+/* Sending message function */
+$(function () {
+    $("#send-email").prop("disabled", true);
+    var checkbox = $("#checkbox-robot");
+    checkbox.click(function () {
+        if ($(this).is(":checked")) {
+            $("#send-email").prop("disabled", false)
+        } else {
+            $("#send-email").prop("disabled", true)
+        }
+    });
+});
+

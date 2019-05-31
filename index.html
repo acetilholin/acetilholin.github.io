@@ -332,7 +332,11 @@
                         <label for="textarea">Sporočilo</label>
                         <textarea class="form-control" id="textarea" rows="3" placeholder="Sporočilo"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-calculate">Pošlji</button>
+                    <div class="input-group form-check custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="remember"  id="checkbox-robot">
+                        <label class="custom-control-label" for="checkbox-robot">Nisem robot</label>
+                    </div>
+                    <button type="submit" class="btn btn-calculate" id="send-email">Pošlji</button>
                 </form>
             </div>
             <a href="#home"><i class="far fa-arrow-alt-circle-up fa-2x scroller"></i></a>
