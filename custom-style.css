@@ -226,15 +226,9 @@ footer img {
     height: 4rem;
     margin: 1.5rem 0;
 }
-.popover-title {
+.text-red {
     color: #ed1c24;
     font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-}
-.popover-title:hover {
-    color: #c4191e;
-    text-decoration: none;
 }
 .modal-title {
     color: #ed1c24 !important;
