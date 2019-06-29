@@ -147,10 +147,17 @@ h3.heading {
     background-color: #ed1c24;
     margin: 0 auto 2rem;
 }
-.fa-car, .fa-euro-sign, .fa-handshake {
+.fa-car, .fa-euro-sign, .fa-handshake, .fa-tools, .fa-truck {
     color: #ed1c24;
 }
 .feature {
+    text-align: center;
+}
+.spacing-bottom {
+    padding-bottom: 1rem;
+}
+.lead-smaller {
+    font-size: 1.1rem !important;
     text-align: center;
 }
 
@@ -219,6 +226,32 @@ footer img {
     height: 4rem;
     margin: 1.5rem 0;
 }
+.popover-title {
+    color: #ed1c24;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+}
+.popover-title:hover {
+    color: #c4191e;
+    text-decoration: none;
+}
+.modal-title {
+    color: #ed1c24 !important;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+}
+.modal-title:hover {
+    color: #c4191e !important;
+    text-decoration: none;
+}
+.modal-content {
+    border-radius: 0 !important;
+}
+.popover {
+    min-width: 400px;
+}
 footer a {
     color: #ed1c24;
 }
@@ -253,9 +286,6 @@ hr.socket {
 }
 footer .form-check-input {
     margin-left: 0;
-}
-.extra-space {
-    margin-left: 1rem;
 }
 /* Scroller */
 .scroller {
