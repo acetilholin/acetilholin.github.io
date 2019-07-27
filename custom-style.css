@@ -202,6 +202,9 @@ h3.heading {
     background: #ed1c24 !important;
 }
 /* calculation */
+.alert {
+    border-radius: 0 !important;
+}
 .btn-gray-costs {
     border-width: medium;
     background: #586168;

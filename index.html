@@ -6,6 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    <!-- Vue js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <!-- Vue js animate -->
+    <link rel="stylesheet" href="https://unpkg.com/vue2-animate/dist/vue2-animate.min.css"/>
+   <!-- <script src="./vue/main.vue"></script>-->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Avto Welt d.o.o</title>
@@ -71,7 +76,7 @@
         <div class="video-wrap">
             <div id="video">
                 <video id="bgvid" playsinline autoplay muted loop>
-                    <source src="img/video.mp4" type="video/mp4">
+                    <source src="./img/video.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
@@ -263,76 +268,98 @@
         </div>
         <div class="os-animation" data-animation="fadeInUp">
             <button class="btn btn-gray-costs" style="cursor: pointer" id="accordion" data-toggle="collapse" data-target="#calculation" aria-expanded="true" aria-controls="collapseOne">Izračun stroškov</button>
-            <form id="calculation" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="calculation" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
                 <a class="modal-title" data-toggle="modal" data-target="#modalDMV">Davek na motorna vozila - DMV</a>
-                <br>
+                <br><br>
+                <transition name="fade">
+                    <div class="alert alert-secondary" role="alert" v-show="show" style="animation-duration: 1s">
+                        <h4 class="alert-heading">Izračun:</h4>
+                        <p>
+                            Stopnja Davka: {{ stopnjaDavka }}%<br>
+                            Znesek davka: {{ znesekDavka }}€<br>
+                            Stopnja pribitka: {{ stopnjaPribitka }}%<br>
+                            Znesek pribitka: {{ znesekPribitka }}€<br>
+                            Strošek transporta: {{ transportCosts }}€ + DDV <i class="fas fa-info-circle" data-toggle="transport-info" title="Cena transporta je informativna. Za točno ceno nam pišite."></i>
+                        </p>
+                        <hr>
+                        <p class="mb-0">
+                            Končni znesek vozila z davkom in transportom: <b>{{ skupajDavek }}€</b><br>
+                        </p>
+                    </div>
+                </transition>
                 <div class="form-row">
                     <div class="col-md-4 mb-2 form-group">
-                        <label for="price">Cena vozila</label>
-                        <input type="text" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Cena vozila">
+                        <label for="price">Davčna osnova</label>
+                        <input type="text" class="form-control" id="price" v-model="price" aria-describedby="emailHelp" title="vpišite ceno vozila v evrih" placeholder="Davčna osnova">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="selectBox1">Gorivo</label>
-                        <select class="custom-select" id="selectBox1">
-                            <option value="1">Dizel</option>
-                            <option value="2">Benzin</option>
-                            <option value="3">LPG</option>
-                            <option value="4">Hibrid</option>
+                        <select class="custom-select" id="selectBox1" v-model="fuel" title="izberite tip goriva">
+                            <option value="dizel">Dizel</option>
+                            <option value="elektrika">Elektrika</option>
+                            <option value="ostalo">Benzin(+vse ostalo)</option>
                         </select>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="selectBox2">Prostornina v ccm</label>
-                        <select class="custom-select" id="selectBox2">
+                        <select class="custom-select" id="selectBox2" v-model="ccm" title="izberite razred prostornine motorja">
                             <option value="1">do 2499</option>
                             <option value="2">od 2500 do 2999</option>
                             <option value="3">od 3000 do 3499</option>
-                            <option value="3">od 3499 do 3999</option>
-                            <option value="3">nad 4000</option>
+                            <option value="4">od 3500 do 3999</option>
+                            <option value="5">nad 4000</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="selectBox3">EURO standard motorja</label>
-                        <select class="custom-select" id="selectBox3">
-                            <option value="1">EURO 2</option>
-                            <option value="2">EURO 3</option>
-                            <option value="3">EURO 4</option>
-                            <option value="3">EURO 5</option>
-                            <option value="3">EURO 6</option>
+                        <select class="custom-select" id="selectBox3" v-model="euroEngine" title="izberite tip EURO standarda motorja">5
+                            <option value="euro1">EURO 1</option>
+                            <option value="euro2">EURO 2</option>
+                            <option value="euro3">EURO 3</option>
+                            <option value="euro4">EURO 4</option>
+                            <option value="euro5">EURO 5</option>
+                            <option value="euro6">EURO 6</option>
                         </select>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="selectBox4">Transport</label>
-                        <select class="custom-select" id="selectBox4">
-                            <option value="1">cona 1</option>
-                            <option value="2">cona 1</option>
-                            <option value="3">cona 1</option>
-                            <option value="3">cona 1</option>
-                            <option value="3">cona 1</option>
+                        <select class="custom-select" id="selectBox4" v-model="location" title="izberite približno lokacijo transporta">
+                            <optgroup label="Nemčija" data-max-options="1">
+                                <option value="0">München</option>
+                                <option value="1">Frankfurt, Nürnberg, Saarbrucken</option>
+                                <option value="2">Köln, Dortmund, Kassel</option>
+                                <option value="3">Munster</option>
+                                <option value="4">Leipzig</option>
+                                <option value="5">Hannover</option>
+                                <option value="6">Berlin, Hamburg, Bremen</option>
+                                <option value="7">Flensburg</option>
+                            </optgroup>
+                            <optgroup label="Belgija" data-max-options="1">
+                                <option value="8">Celotna država</option>
+                            </optgroup>
+                            <optgroup label="Nizozemska" data-max-options="1">
+                                <option value="9" >Rotterdam + Amsterdam</option>
+                                <option value="10">Groningen</option>
+                                <option value="11">Ostale destinacie v NL</option>
+                            </optgroup>
                         </select>
                     </div>
                     <div class="col-md-4 mb-2 form-group">
                         <label for="emission">Emisija CO2 v g/km</label>
-                        <input type="text" class="form-control" id="emission" aria-describedby="emailHelp" placeholder="0">
+                        <input type="text" class="form-control" id="emission" aria-describedby="emailHelp" placeholder="0" v-model="co2">
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="customSwitch1">Emisija trdih delcev v g/km</label>
+                    <label for="customSwitch1">Emisija trdih delcev v g/km (samo za dizel)</label>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1" v-model="dizelTrdiDelci">
                         <label class="custom-control-label" for="customSwitch1">Izpust trdih delcev nad 0,005 g/km</label>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="customSwitch2">Tip cene</label>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                        <label class="custom-control-label" for="customSwitch2">Neto / bruto </label>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-calculate">Izračunaj</button>
-            </form>
+                <button class="btn btn-calculate" @click="calculate()">Izračunaj</button>
+            </div>
         </div>
     </div>
 </div>
@@ -343,10 +370,10 @@
                 <img src="img/logo2-transparent.png" alt="">
                 <p>AVTO WELT d.o.o.<br>Premium selection &amp; Fair price</p>
                 <strong>Naslov</strong>
-                <p>Povir 31,<br>6210 Sežana</p>
+                <p>Vanganelska cesta 5,<br>6000 Koper</p>
                 <strong>Kontakt</strong>
                 <p>Tadej Perhavec</p>
-                <p>+386 41 743 217<br>info(afna)avto-welt.si</p>
+                <p>+386 41 743 217<br>info(afna)domain.si</p>
                 <a href="http://bit.ly/avto-welt" target="_blank"><i class="fas fa-map-marked-alt fa-2x"></i></a>
                 <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
             </div>
@@ -398,3 +425,137 @@
 </div>
 </body>
 </html>
+<script>
+    var calc = new Vue({
+        el: '#calculation',
+        data(){
+            return {
+                price: 0,
+                fuel: ' ',
+                euroEngine: 0,
+                co2: 0,
+                location: 0,
+                ccm: 0,
+                show: false,
+                emission:0,
+                fuelPoints: 0,
+                emissionPoints: 1,
+                ccmPoints: 0,
+                transportCosts: 0,
+                dizelTrdiDelci: false,
+                step1: 0, step2:0, step3: 0,
+                emissionBenzin: 0, emissionDizel:0,
+                stopnjaDavka: 0, stopnjaPribitka: 0, znesekPribitka: 0, skupajDavek: 0, znesekDavka: 0
+            }
+        },
+        methods: {
+            calculate: function () {
+
+                var costs = [240, 260, 280, 320, 320, 330, 350, 400, 300, 350, 400, 430 ];
+                this.transportCosts = costs[this.location];
+
+                if(this.fuel === 'elektrika') {
+                    fuelPoints = 1;
+                } else if (this.fuel === 'dizel') {
+                    fuelPoints = 2;
+                } else {
+                    fuelPoints = 3
+                }
+
+                if (this.euroEngine === 'euro1') {
+                    emissionPoints = 10;
+                } else if (this.euroEngine === 'euro2') {
+                    emissionPoints = 10;
+                } else if (this.euroEngine === 'euro3') {
+                    emissionPoints = 5;
+                } else if (this.euroEngine === 'euro4') {
+                    emissionPoints = 2;
+                } else if (this.euroEngine === 'euro5') {
+                    emissionPoints = 0;
+                } else {
+                    emissionPoints = 0;
+                }
+
+                if (this.ccm === '1') {
+                    ccmPoints = 0;
+                } else if (this.ccm === '2') {
+                    ccmPoints = 8;
+                } else if (this.ccm === '3') {
+                    ccmPoints = 10;
+                } else if (this.ccm === '4') {
+                    ccmPoints = 13;
+                } else {
+                    ccmPoints = 16;
+                }
+
+                if (this.fuel === 'dizel' && this.dizelTrdiDelci === true) {
+                    this.dizelTrdiDelci = 5;
+                } else {
+                    this.dizelTrdiDelci = 0;
+                }
+
+                if (this.fuel === 'elektrika') {
+                    this.co2 = 0;
+                }
+
+                if (this.co2 >= 0 && this.co2 < 110.1) {
+                    emissionBenzin = 0.5;
+                    emissionDizel = 1
+                } else if(this.co2 > 110.1 && this.co2 < 120.01) {
+                    emissionBenzin = 1;
+                    emissionDizel = 2;
+                } else if (this.co2 > 120.01 && this.co2 < 130.01) {
+                    emissionBenzin = 1.5;
+                    emissionDizel = 3
+                } else if (this.co2 > 130.01 && this.co2 < 150.01) {
+                    emissionBenzin = 3;
+                    emissionDizel = 6
+                } else if (this.co2 > 150.01 && this.co2 < 170.01) {
+                    emissionBenzin = 6;
+                    emissionDizel = 11
+                } else if (this.co2 > 170.01 && this.co2 < 190.01) {
+                    emissionBenzin = 9;
+                    emissionDizel = 15
+                } else if (this.co2 > 190.01 && this.co2 < 210.01) {
+                    emissionBenzin = 13;
+                    emissionDizel = 18;
+                } else if (this.co2 > 210.01 && this.co2 < 230.1) {
+                    emissionBenzin = 18;
+                    emissionDizel = 22;
+                } else if (this.co2 > 230.01 && this.co2 < 250.01) {
+                    emissionBenzin = 23;
+                    emissionDizel = 26;
+                } else {
+                    emissionBenzin = 28;
+                    emissionDizel = 31;
+                }
+
+                if(this.fuel === 'ostalo'){
+                    step1 = true;
+                } else if (this.fuel === 'dizel' && this.euroEngine === 'euro6') {
+                    step1 = true;
+                } else if (this.fuel === 'elektrika'){
+                    step1 = true;
+                } else {
+                    step1 = false;
+                }
+
+                step2 = step1 === true ? emissionBenzin : emissionDizel;
+
+                if (this.fuel === 'elektrika') {
+                    step3 = step2;
+                } else {
+                    step3 = step2 + emissionPoints;
+                }
+
+                this.stopnjaDavka = step3 + this.dizelTrdiDelci;
+                this.znesekDavka = Math.round((this.stopnjaDavka / 100) * this.price,0);
+                this.stopnjaPribitka = ccmPoints;
+                this.znesekPribitka = Math.round(this.price * (this.stopnjaPribitka / 100),0);
+                this.skupajDavek = parseInt(this.price) + this.znesekDavka + this.znesekPribitka + this.transportCosts;
+                this.show = true;
+            }
+        }
+    })
+
+</script>

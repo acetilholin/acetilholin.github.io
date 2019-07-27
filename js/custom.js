@@ -112,6 +112,10 @@ $(document).ready(function() {
     });
 });
 
+$(function () {
+    $('[data-toggle="transport-info"]').tooltip();
+});
+
 /* Sending message function */
 $(function () {
     $("#send-email").prop("disabled", true);
