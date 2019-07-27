@@ -290,31 +290,40 @@
                 <div class="form-row">
                     <div class="col-md-4 mb-2 form-group">
                         <label for="price">Davčna osnova</label>
-                        <input type="text" class="form-control" id="price" v-model="price" aria-describedby="emailHelp" title="vpišite ceno vozila v evrih" placeholder="Davčna osnova">
+                        <input type="text" class="form-control" v-bind:class="{ 'is-invalid': carPrice }" id="price" v-model="price" aria-describedby="emailHelp" title="vpišite ceno vozila v evrih" placeholder="Davčna osnova" required>
+                        <div class="invalid-feedback">
+                            Vpišite ceno vozila
+                        </div>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="selectBox1">Gorivo</label>
-                        <select class="custom-select" id="selectBox1" v-model="fuel" title="izberite tip goriva">
+                        <select class="custom-select" id="selectBox1" v-bind:class="{ 'is-invalid': carFuel }" v-model="fuel" title="izberite tip goriva" required>
                             <option value="dizel">Dizel</option>
                             <option value="elektrika">Elektrika</option>
                             <option value="ostalo">Benzin(+vse ostalo)</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Izberite tip goriva
+                        </div>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="selectBox2">Prostornina v ccm</label>
-                        <select class="custom-select" id="selectBox2" v-model="ccm" title="izberite razred prostornine motorja">
+                        <select class="custom-select" id="selectBox2" v-bind:class="{ 'is-invalid': carCCM }" v-model="ccm" title="izberite razred prostornine motorja" required>
                             <option value="1">do 2499</option>
                             <option value="2">od 2500 do 2999</option>
                             <option value="3">od 3000 do 3499</option>
                             <option value="4">od 3500 do 3999</option>
                             <option value="5">nad 4000</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Izberite razred prostornine
+                        </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="selectBox3">EURO standard motorja</label>
-                        <select class="custom-select" id="selectBox3" v-model="euroEngine" title="izberite tip EURO standarda motorja">5
+                        <select class="custom-select" id="selectBox3" v-bind:class="{ 'is-invalid': carEURO }" v-model="euroEngine" title="izberite tip EURO standarda motorja" required>
                             <option value="euro1">EURO 1</option>
                             <option value="euro2">EURO 2</option>
                             <option value="euro3">EURO 3</option>
@@ -322,10 +331,13 @@
                             <option value="euro5">EURO 5</option>
                             <option value="euro6">EURO 6</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Izberite EURO standard motorja
+                        </div>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="selectBox4">Transport</label>
-                        <select class="custom-select" id="selectBox4" v-model="location" title="izberite približno lokacijo transporta">
+                        <select class="custom-select" id="selectBox4" v-model="location" title="izberite približno lokacijo transporta" required>
                             <optgroup label="Nemčija" data-max-options="1">
                                 <option value="0">München</option>
                                 <option value="1">Frankfurt, Nürnberg, Saarbrucken</option>
@@ -348,7 +360,10 @@
                     </div>
                     <div class="col-md-4 mb-2 form-group">
                         <label for="emission">Emisija CO2 v g/km</label>
-                        <input type="text" class="form-control" id="emission" aria-describedby="emailHelp" placeholder="0" v-model="co2">
+                        <input type="text" class="form-control" id="emission" aria-describedby="emailHelp" placeholder="0" v-bind:class="{ 'is-invalid': carCO2 }" v-model="co2" required>
+                        <div class="invalid-feedback">
+                            Vpišite emisije CO2
+                        </div>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -431,20 +446,18 @@
         data(){
             return {
                 price: 0,
-                fuel: ' ',
+                fuel: '',
                 euroEngine: 0,
                 co2: 0,
-                location: 0,
-                ccm: 0,
                 show: false,
-                emission:0,
+                emission:0, emissionPoints: 1,
                 fuelPoints: 0,
-                emissionPoints: 1,
-                ccmPoints: 0,
-                transportCosts: 0,
+                ccm: 0, ccmPoints: 0,
+                location: 0, transportCosts: 0,
                 dizelTrdiDelci: false,
                 step1: 0, step2:0, step3: 0,
                 emissionBenzin: 0, emissionDizel:0,
+                carPrice: 0, carFuel: '', carCCM: '', carEURO: '', carCO2: '',
                 stopnjaDavka: 0, stopnjaPribitka: 0, znesekPribitka: 0, skupajDavek: 0, znesekDavka: 0
             }
         },
@@ -534,11 +547,7 @@
                     step1 = true;
                 } else if (this.fuel === 'dizel' && this.euroEngine === 'euro6') {
                     step1 = true;
-                } else if (this.fuel === 'elektrika'){
-                    step1 = true;
-                } else {
-                    step1 = false;
-                }
+                } else step1 = this.fuel === 'elektrika';
 
                 step2 = step1 === true ? emissionBenzin : emissionDizel;
 
@@ -549,11 +558,17 @@
                 }
 
                 this.stopnjaDavka = step3 + this.dizelTrdiDelci;
-                this.znesekDavka = Math.round((this.stopnjaDavka / 100) * this.price,0);
+                this.znesekDavka = Math.round((this.stopnjaDavka / 100) * this.price, 0);
                 this.stopnjaPribitka = ccmPoints;
-                this.znesekPribitka = Math.round(this.price * (this.stopnjaPribitka / 100),0);
+                this.znesekPribitka = Math.round(this.price * (this.stopnjaPribitka / 100), 0);
                 this.skupajDavek = parseInt(this.price) + this.znesekDavka + this.znesekPribitka + this.transportCosts;
-                this.show = true;
+
+                this.carPrice = this.price === 0;
+                this.carFuel = this.fuel === '';
+                this.carCCM = this.ccm === 0;
+                this.carEURO = this.euroEngine === 0;
+                this.carCO2 = this.fuel !== 'elektrika' && this.co2 === 0;
+                this.show = this.carPrice === false && this.carFuel === false && this.carCCM === false && this.carEURO === false && this.carCO2 === false;
             }
         }
     })
