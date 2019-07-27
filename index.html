@@ -266,115 +266,113 @@
                 <li> Morebitno notranje globinsko čiščenje vozila - doplačilo</li>
             </p>
         </div>
-        <div class="os-animation" data-animation="fadeInUp">
-            <button class="btn btn-gray-costs" style="cursor: pointer" id="accordion" data-toggle="collapse" data-target="#calculation" aria-expanded="true" aria-controls="collapseOne">Izračun stroškov</button>
-            <div id="calculation" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
-                <a class="modal-title" data-toggle="modal" data-target="#modalDMV">Davek na motorna vozila - DMV</a>
-                <br><br>
-                <transition name="fade">
-                    <div class="alert alert-secondary" role="alert" v-show="show" style="animation-duration: 1s">
-                        <h4 class="alert-heading">Izračun:</h4>
-                        <p>
-                            Stopnja Davka: {{ stopnjaDavka }}%<br>
-                            Znesek davka: {{ znesekDavka }}€<br>
-                            Stopnja pribitka: {{ stopnjaPribitka }}%<br>
-                            Znesek pribitka: {{ znesekPribitka }}€<br>
-                            Strošek transporta: {{ transportCosts }}€ + DDV <i class="fas fa-info-circle" data-toggle="transport-info" title="Cena transporta je informativna. Za točno ceno nam pišite."></i>
-                        </p>
-                        <hr>
-                        <p class="mb-0">
-                            Končni znesek vozila z davkom in transportom: <b>{{ skupajDavek }}€</b><br>
-                        </p>
-                    </div>
-                </transition>
-                <div class="form-row">
-                    <div class="col-md-4 mb-2 form-group">
-                        <label for="price">Davčna osnova</label>
-                        <input type="text" class="form-control" v-bind:class="{ 'is-invalid': carPrice }" id="price" v-model="price" aria-describedby="emailHelp" title="vpišite ceno vozila v evrih" placeholder="Davčna osnova" required>
-                        <div class="invalid-feedback">
-                            Vpišite ceno vozila
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="selectBox1">Gorivo</label>
-                        <select class="custom-select" id="selectBox1" v-bind:class="{ 'is-invalid': carFuel }" v-model="fuel" title="izberite tip goriva" required>
-                            <option value="dizel">Dizel</option>
-                            <option value="elektrika">Elektrika</option>
-                            <option value="ostalo">Benzin(+vse ostalo)</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Izberite tip goriva
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="selectBox2">Prostornina v ccm</label>
-                        <select class="custom-select" id="selectBox2" v-bind:class="{ 'is-invalid': carCCM }" v-model="ccm" title="izberite razred prostornine motorja" required>
-                            <option value="1">do 2499</option>
-                            <option value="2">od 2500 do 2999</option>
-                            <option value="3">od 3000 do 3499</option>
-                            <option value="4">od 3500 do 3999</option>
-                            <option value="5">nad 4000</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Izberite razred prostornine
-                        </div>
+        <button class="btn btn-gray-costs" style="cursor: pointer" id="accordion" data-toggle="collapse" data-target="#calculation" aria-expanded="true" aria-controls="collapseOne">Izračun stroškov</button>
+        <div id="calculation" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+            <a class="modal-title" data-toggle="modal" data-target="#modalDMV">Davek na motorna vozila - DMV</a>
+            <br><br>
+            <transition name="fade">
+                <div class="alert alert-secondary" role="alert" v-show="show" style="animation-duration: 1s">
+                    <h4 class="alert-heading">Izračun:</h4>
+                    <p>
+                        Stopnja Davka: {{ stopnjaDavka }}%<br>
+                        Znesek davka: {{ znesekDavka }}€<br>
+                        Stopnja pribitka: {{ stopnjaPribitka }}%<br>
+                        Znesek pribitka: {{ znesekPribitka }}€<br>
+                        Strošek transporta: {{ transportCosts }}€ + DDV <i class="fas fa-info-circle" data-toggle="transport-info" title="Cena transporta je informativna. Za točno ceno nam pišite."></i>
+                    </p>
+                    <hr>
+                    <p class="mb-0">
+                        Končni znesek vozila z davkom in transportom: <b>{{ skupajDavek }}€</b><br>
+                    </p>
+                </div>
+            </transition>
+            <div class="form-row">
+                <div class="col-md-4 mb-2 form-group">
+                    <label for="price">Davčna osnova</label>
+                    <input type="text" class="form-control" v-bind:class="{ 'is-invalid': carPrice }" id="price" v-model="price" aria-describedby="emailHelp" title="vpišite ceno vozila v evrih" placeholder="Davčna osnova" required>
+                    <div class="invalid-feedback">
+                        Vpišite ceno vozila
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="selectBox3">EURO standard motorja</label>
-                        <select class="custom-select" id="selectBox3" v-bind:class="{ 'is-invalid': carEURO }" v-model="euroEngine" title="izberite tip EURO standarda motorja" required>
-                            <option value="euro1">EURO 1</option>
-                            <option value="euro2">EURO 2</option>
-                            <option value="euro3">EURO 3</option>
-                            <option value="euro4">EURO 4</option>
-                            <option value="euro5">EURO 5</option>
-                            <option value="euro6">EURO 6</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Izberite EURO standard motorja
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="selectBox4">Transport</label>
-                        <select class="custom-select" id="selectBox4" v-model="location" title="izberite približno lokacijo transporta" required>
-                            <optgroup label="Nemčija" data-max-options="1">
-                                <option value="0">München</option>
-                                <option value="1">Frankfurt, Nürnberg, Saarbrucken</option>
-                                <option value="2">Köln, Dortmund, Kassel</option>
-                                <option value="3">Munster</option>
-                                <option value="4">Leipzig</option>
-                                <option value="5">Hannover</option>
-                                <option value="6">Berlin, Hamburg, Bremen</option>
-                                <option value="7">Flensburg</option>
-                            </optgroup>
-                            <optgroup label="Belgija" data-max-options="1">
-                                <option value="8">Celotna država</option>
-                            </optgroup>
-                            <optgroup label="Nizozemska" data-max-options="1">
-                                <option value="9" >Rotterdam + Amsterdam</option>
-                                <option value="10">Groningen</option>
-                                <option value="11">Ostale destinacie v NL</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                    <div class="col-md-4 mb-2 form-group">
-                        <label for="emission">Emisija CO2 v g/km</label>
-                        <input type="text" class="form-control" id="emission" aria-describedby="emailHelp" placeholder="0" v-bind:class="{ 'is-invalid': carCO2 }" v-model="co2" required>
-                        <div class="invalid-feedback">
-                            Vpišite emisije CO2
-                        </div>
+                <div class="form-group col-md-4">
+                    <label for="selectBox1">Gorivo</label>
+                    <select class="custom-select" id="selectBox1" v-bind:class="{ 'is-invalid': carFuel }" v-model="fuel" title="izberite tip goriva" required>
+                        <option value="dizel">Dizel</option>
+                        <option value="elektrika">Elektrika</option>
+                        <option value="ostalo">Benzin(+vse ostalo)</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Izberite tip goriva
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="customSwitch1">Emisija trdih delcev v g/km (samo za dizel)</label>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch1" v-model="dizelTrdiDelci">
-                        <label class="custom-control-label" for="customSwitch1">Izpust trdih delcev nad 0,005 g/km</label>
+                <div class="form-group col-md-4">
+                    <label for="selectBox2">Prostornina v ccm</label>
+                    <select class="custom-select" id="selectBox2" v-bind:class="{ 'is-invalid': carCCM }" v-model="ccm" title="izberite razred prostornine motorja" required>
+                        <option value="1">do 2499</option>
+                        <option value="2">od 2500 do 2999</option>
+                        <option value="3">od 3000 do 3499</option>
+                        <option value="4">od 3500 do 3999</option>
+                        <option value="5">nad 4000</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Izberite razred prostornine
                     </div>
                 </div>
-                <button class="btn btn-calculate" @click="calculate()">Izračunaj</button>
             </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="selectBox3">EURO standard motorja</label>
+                    <select class="custom-select" id="selectBox3" v-bind:class="{ 'is-invalid': carEURO }" v-model="euroEngine" title="izberite tip EURO standarda motorja" required>
+                        <option value="euro1">EURO 1</option>
+                        <option value="euro2">EURO 2</option>
+                        <option value="euro3">EURO 3</option>
+                        <option value="euro4">EURO 4</option>
+                        <option value="euro5">EURO 5</option>
+                        <option value="euro6">EURO 6</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Izberite EURO standard motorja
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="selectBox4">Transport</label>
+                    <select class="custom-select" id="selectBox4" v-model="location" title="izberite približno lokacijo transporta" required>
+                        <optgroup label="Nemčija" data-max-options="1">
+                            <option value="0">München</option>
+                            <option value="1">Frankfurt, Nürnberg, Saarbrucken</option>
+                            <option value="2">Köln, Dortmund, Kassel</option>
+                            <option value="3">Munster</option>
+                            <option value="4">Leipzig</option>
+                            <option value="5">Hannover</option>
+                            <option value="6">Berlin, Hamburg, Bremen</option>
+                            <option value="7">Flensburg</option>
+                        </optgroup>
+                        <optgroup label="Belgija" data-max-options="1">
+                            <option value="8">Celotna država</option>
+                        </optgroup>
+                        <optgroup label="Nizozemska" data-max-options="1">
+                            <option value="9" >Rotterdam + Amsterdam</option>
+                            <option value="10">Groningen</option>
+                            <option value="11">Ostale destinacie v NL</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-2 form-group">
+                    <label for="emission">Emisija CO2 v g/km</label>
+                    <input type="text" class="form-control" id="emission" aria-describedby="emailHelp" placeholder="0" v-bind:class="{ 'is-invalid': carCO2 }" v-model="co2" required>
+                    <div class="invalid-feedback">
+                        Vpišite emisije CO2
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="customSwitch1">Emisija trdih delcev v g/km (samo za dizel)</label>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" v-model="dizelTrdiDelci">
+                    <label class="custom-control-label" for="customSwitch1">Izpust trdih delcev nad 0,005 g/km</label>
+                </div>
+            </div>
+            <button class="btn btn-calculate" @click="calculate()">Izračunaj</button>
         </div>
     </div>
 </div>
