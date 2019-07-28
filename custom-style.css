@@ -177,6 +177,8 @@ h3.heading {
     box-shadow: 0 0 .8rem rgba(0,0,0,.075);
     margin:  0 1rem;
     transition: transform .4s ease;
+    min-height: 600px;
+    max-height: 601px;
 }
 .card-img-top {
     border-radius: 0;
@@ -330,7 +332,7 @@ and (orientation : portrait) {
         text-shadow: .1rem .1rem .8rem black;
     }
     .card {
-        min-height: 550px !important;
+        min-height: 630px !important;
     }
     .padding {
         position: absolute !important;
@@ -368,7 +370,7 @@ and (orientation : portrait) {
         text-shadow: .1rem .1rem .8rem black;
     }
     .card {
-        min-height: 550px !important;
+        min-height: 630px !important;
     }
     .padding {
         position: absolute !important;
@@ -405,7 +407,7 @@ and (orientation : portrait) {
             text-shadow: .1rem .1rem .8rem black;
         }
         .card {
-            min-height: 560px !important;
+            min-height: 630px !important;
         }
         .padding {
             position: absolute !important;

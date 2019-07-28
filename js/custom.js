@@ -29,18 +29,13 @@ $(document).ready(function () {
 
 $(document).ready(function(){
     $("a").on('click', function(event) {
-
-
         if (this.hash !== "") {
             event.preventDefault();
-
             var hash = this.hash;
 
             $('html, body').animate({
                 scrollTop: $(hash).offset().top
             }, 800, function(){
-
-
                 window.location.hash = hash;
             });
         }
@@ -56,18 +51,18 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
-    $("#team-slider").owlCarousel({
+    $("#cars-in-offer").owlCarousel({
             items:3,
             autoplay:true,
-            smartSpeed:700,
+            smartSpeed:900,
             loop:true,
             autoplayHoverPause:true,
             responsive : {
                 0 : {
-                    items: 1
+                    items: 1,
                 },
                 576 : {
-                    items: 2
+                    items: 2,
                 },
                 768 : {
                     items: 3

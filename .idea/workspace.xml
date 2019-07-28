@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30d5d187-ca49-4f22-baf1-3ca72b40a0e8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/img/cars/audi01.JPEG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/cars/audi02.JPEG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/cars/cla01.JPEG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/cars/passat01.JPEG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/cars/passat02.JPEG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/owl.theme.default.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/owl.theme.default.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/custom-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/custom-style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/custom.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +29,11 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectId" id="1OYrtSxqpf6A1Wkl6OhPw44OEWM" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -77,7 +87,9 @@
       <workItem from="1564165592848" duration="10136000" />
       <workItem from="1564213612131" duration="10384000" />
       <workItem from="1564303121193" duration="7761000" />
-      <workItem from="1564320172279" duration="609000" />
+      <workItem from="1564320172279" duration="813000" />
+      <workItem from="1564333771397" duration="2518000" />
+      <workItem from="1564336759761" duration="4286000" />
     </task>
     <servers />
   </component>
@@ -96,5 +108,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
