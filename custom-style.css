@@ -389,7 +389,7 @@ and (orientation : portrait) {
         .padding {
             position: absolute !important;
             bottom: 0 !important;
-            margin: 20px 35% !important;
+            margin: 5px 35% !important;
         }
     }
 
