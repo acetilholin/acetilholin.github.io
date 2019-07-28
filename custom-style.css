@@ -364,6 +364,7 @@ and (orientation : portrait) {
 }
     @media only screen /* Samsung galaxy S8 */
     and (min-width: 360px)
+    and (max-width: 767px)
     and (orientation: portrait) {
         .navbar-nav .nav-link {
             color: #ed1c24;
