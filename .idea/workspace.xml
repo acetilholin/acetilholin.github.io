@@ -25,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -75,7 +75,8 @@
       <workItem from="1564165154558" duration="221000" />
       <workItem from="1564165592848" duration="10136000" />
       <workItem from="1564213612131" duration="10384000" />
-      <workItem from="1564303121193" duration="7565000" />
+      <workItem from="1564303121193" duration="7761000" />
+      <workItem from="1564320172279" duration="84000" />
     </task>
     <servers />
   </component>

@@ -305,6 +305,10 @@ footer .form-check-input {
 and (min-device-width : 375px)
 and (max-device-width : 667px)
 and (orientation : portrait) {
+    .navbar.solid {
+        background: rgba(0,0,0,0.99) !important;
+        transition: background-color 1s ease 0s;
+    }
     .navbar-nav .nav-link {
         color: #ed1c24;
         padding-top: .8rem;
@@ -336,6 +340,10 @@ and (orientation : portrait) {
 and (min-device-width : 414px)
 and (max-device-width : 736px)
 and (orientation : portrait) {
+    .navbar.solid {
+        background: rgba(0,0,0,0.99) !important;
+        transition: background-color 1s ease 0s;
+    }
     .navbar-nav .nav-link {
         color: #ed1c24;
         padding-top: .8rem;
@@ -366,6 +374,10 @@ and (orientation : portrait) {
     and (min-width: 360px)
     and (max-width: 767px)
     and (orientation: portrait) {
+        .navbar.solid {
+            background: rgba(0,0,0,0.99) !important;
+            transition: background-color 1s ease 0s;
+        }
         .navbar-nav .nav-link {
             color: #ed1c24;
             padding-top: .8rem;
