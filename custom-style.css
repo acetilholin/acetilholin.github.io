@@ -299,7 +299,9 @@ footer .form-check-input {
 }
 /* mobile version */
 
-@media (max-width: 800px) {
+@media only screen /* iPhone 6,7,8 */
+and (min-device-width : 375px)
+and (max-device-width : 667px) {
     .navbar-nav .nav-link {
         color: #ed1c24;
         padding-top: .8rem;
@@ -308,4 +310,23 @@ footer .form-check-input {
     .navbar-nav .nav-link:hover {
         color: #586168;
     }
+    .main-title {
+        font-size: 40px !important;
+    }
+    .sub-title {
+        font-size: 33px !important;
+        color: #ffffff;
+        font-weight: 500;
+        text-shadow: .1rem .1rem .8rem black;
+    }
+    .card {
+        min-height: 550px !important;
+    }
+    .padding {
+        position: absolute !important;
+        bottom: 0 !important;
+        margin: 20px 35% !important;
+    }
+
+
 }
