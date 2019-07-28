@@ -281,22 +281,6 @@
         <div id="calculation" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
             <a class="modal-title" data-toggle="modal" data-target="#modalDMV">Davek na motorna vozila - DMV</a>
             <br><br>
-            <transition name="fade">
-                <div class="alert alert-secondary" role="alert" v-show="show" style="animation-duration: 1s">
-                    <h4 class="alert-heading">Izračun:</h4>
-                    <p>
-                        Stopnja Davka: {{ stopnjaDavka }}%<br>
-                        Znesek davka: {{ znesekDavka }}€<br>
-                        Stopnja pribitka: {{ stopnjaPribitka }}%<br>
-                        Znesek pribitka: {{ znesekPribitka }}€<br>
-                        Strošek transporta: {{ transportCosts }}€ + DDV <i class="fas fa-info-circle" data-toggle="transport-info" title="Cena transporta je informativna. Za točno ceno nam pišite."></i>
-                    </p>
-                    <hr>
-                    <p class="mb-0">
-                        Končni znesek vozila z davkom in transportom: <b>{{ skupajDavek }}€</b><br>
-                    </p>
-                </div>
-            </transition>
             <div class="form-row">
                 <div class="col-md-4 mb-2 form-group">
                     <label for="price">Davčna osnova</label>
@@ -383,6 +367,22 @@
                     <label class="custom-control-label" for="customSwitch1">Izpust trdih delcev nad 0,005 g/km</label>
                 </div>
             </div>
+            <transition name="fade">
+                <div class="alert alert-secondary" role="alert" v-show="show" style="animation-duration: 1s">
+                    <h4 class="alert-heading">Izračun:</h4>
+                    <p>
+                        Stopnja Davka: {{ stopnjaDavka }}%<br>
+                        Znesek davka: {{ znesekDavka }}€<br>
+                        Stopnja pribitka: {{ stopnjaPribitka }}%<br>
+                        Znesek pribitka: {{ znesekPribitka }}€<br>
+                        Strošek transporta: {{ transportCosts }}€ + DDV <i class="fas fa-info-circle" data-toggle="transport-info" title="Cena transporta je informativna. Za točno ceno nam pišite."></i>
+                    </p>
+                    <hr>
+                    <p class="mb-0">
+                        Končni znesek vozila z davkom in transportom: <b>{{ skupajDavek }}€</b><br>
+                    </p>
+                </div>
+            </transition>
             <button class="btn btn-calculate" @click="calculate()">Izračunaj</button>
         </div>
     </div>
