@@ -309,6 +309,9 @@ and (orientation : portrait) {
         background: rgba(0,0,0,0.99) !important;
         transition: background-color 1s ease 0s;
     }
+    .mobile-title {
+        font-size: 27px !important;
+    }
     .navbar-nav .nav-link {
         color: #ed1c24;
         padding-top: .8rem;
@@ -344,6 +347,9 @@ and (orientation : portrait) {
         background: rgba(0,0,0,0.99) !important;
         transition: background-color 1s ease 0s;
     }
+    .mobile-title {
+        font-size: 27px !important;
+    }
     .navbar-nav .nav-link {
         color: #ed1c24;
         padding-top: .8rem;
@@ -377,6 +383,9 @@ and (orientation : portrait) {
         .navbar.solid {
             background: rgba(0,0,0,0.99) !important;
             transition: background-color 1s ease 0s;
+        }
+        .mobile-title {
+            font-size: 27px !important;
         }
         .navbar-nav .nav-link {
             color: #ed1c24;
