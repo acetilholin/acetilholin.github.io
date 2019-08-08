@@ -299,11 +299,11 @@
             <button class="btn btn-gray-costs" style="cursor: pointer" id="accordion" data-toggle="collapse" data-target="#calculation" aria-expanded="true" aria-controls="collapseOne">Izračun stroškov</button>
         </div>
         <div id="calculation" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
-            <a class="modal-title" data-toggle="modal" data-target="#modalDMV">Davek na motorna vozila - DMV</a>
+            <a class="modal-title" data-toggle="modal" data-target="#modalDMV" title="Kliknite za več informacij">Davek na motorna vozila - DMV</a>
             <br><br>
             <div class="form-row">
                 <div class="col-md-4 mb-2 form-group">
-                    <label for="price">Davčna osnova</label>
+                    <label for="price">Cena vozila</label>
                     <input type="text" class="form-control" v-bind:class="{ 'is-invalid': carPrice }" id="price" v-model="price" aria-describedby="emailHelp" title="vpišite ceno vozila v evrih" placeholder="Davčna osnova" required>
                     <div class="invalid-feedback">
                         Vpišite ceno vozila
@@ -331,6 +331,24 @@
                     </select>
                     <div class="invalid-feedback">
                         Izberite razred prostornine
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="mb-3 col-md-4">
+                    <label for="grossnett">
+                        <a class="modal-title" data-toggle="modal" data-target="#price" title="Kliknite za več informacij">Tip cene</a>
+                    </label>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="grossnett" v-model="priceType">
+                        <label class="custom-control-label" for="grossnett">Bruto / neto </label>
+                    </div>
+                </div>
+                <div class="mb-3 col-md-4">
+                    <label for="customSwitch1">Emisija trdih delcev v g/km (samo za dizel)</label>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1" v-model="dizelTrdiDelci">
+                        <label class="custom-control-label" for="customSwitch1">Izpust trdih delcev nad 0,005 g/km</label>
                     </div>
                 </div>
             </div>
@@ -380,13 +398,6 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-3">
-                <label for="customSwitch1">Emisija trdih delcev v g/km (samo za dizel)</label>
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1" v-model="dizelTrdiDelci">
-                    <label class="custom-control-label" for="customSwitch1">Izpust trdih delcev nad 0,005 g/km</label>
-                </div>
-            </div>
             <transition name="fade">
                 <div class="alert alert-secondary" role="alert" v-show="show" style="animation-duration: 1s">
                     <h4 class="alert-heading">Izračun:</h4>
@@ -395,11 +406,12 @@
                         Znesek davka: {{ znesekDavka }}€<br>
                         Stopnja pribitka: {{ stopnjaPribitka }}%<br>
                         Znesek pribitka: {{ znesekPribitka }}€<br>
-                        Strošek transporta: {{ transportCosts }}€ + DDV <i class="fas fa-info-circle" data-toggle="transport-info" title="Cena transporta je informativna. Za točno ceno nam pišite."></i>
+                        Strošek transporta: {{ transportCosts }}€ + DDV<br>
                     </p>
                     <hr>
                     <p class="mb-0">
-                        Končni znesek vozila z davkom in transportom: <b>{{ skupajDavek }}€</b><br>
+                        Končni znesek vozila z davkom in transportom: <b>{{ skupajDavek }}€</b><br><br>
+                        <span class="font-weight-light">Končna cena vključuje DMV, DDV, homologacijo, vse stroške uvoza in transporta<i class="fas fa-info-circle" data-toggle="transport-info" title="Izračun je informativen in velja v primeru plačila vozila po predračunu."></i></span>
                     </p>
                 </div>
             </transition>
@@ -467,6 +479,28 @@
         </div>
     </div>
 </div>
+<!-- Modal 2-->
+<div class="modal fade" id="priceType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>
+                    Kdaj izbrati <span class="text-red">neto</span> ceno?<br>
+                    <li>če je kupec pravna oseba zavezanec za DDV</li>
+                    <li>če je kupec fizična oseba, ki financira vozilo preko Banke ali leasinga</li>
+                    <li>če je vozilo mlajše od 6 mesecev</li>
+                    <li>če ima vozilo prevoženih manj kot 6.000 km</li>
+                    <br><br>
+                    Kdaj izbrati <span class="text-red">bruto</span> ceno?<br>
+                    <li>če ste fizična oseba, ki plačuje po predračunu</li>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-gray-costs" data-dismiss="modal">Zapri</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
 <script>
@@ -483,7 +517,7 @@
                 fuelPoints: 0,
                 ccm: 0, ccmPoints: 0,
                 location: 0, transportCosts: 0,
-                dizelTrdiDelci: false,
+                dizelTrdiDelci: false, priceType: false,
                 step1: 0, step2:0, step3: 0,
                 emissionBenzin: 0, emissionDizel:0,
                 carPrice: 0, carFuel: '', carCCM: '', carEURO: '', carCO2: '',
@@ -584,6 +618,14 @@
                     step3 = step2;
                 } else {
                     step3 = step2 + emissionPoints;
+                }
+
+                if (this.priceType === true) {
+                    if (this.value < 7) {
+                        this.price += (this.price * 0.19);
+                    } else {
+                        this.price += (this.price * 0.21);
+                    }
                 }
 
                 this.stopnjaDavka = step3 + this.dizelTrdiDelci;

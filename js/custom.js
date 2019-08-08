@@ -116,6 +116,7 @@ $(document).ready(function() {
 
 $(function () {
     $('[data-toggle="transport-info"]').tooltip();
+    $('[data-toggle="price-info"]').tooltip();
 });
 
 /* Sending message function */
