@@ -420,6 +420,9 @@ and (orientation : portrait) {
         bottom: 0 !important;
         margin: 20px 35% !important;
     }
+    .navbar-nav .nav-link {
+        padding-top: .1rem !important;
+    }
 }
     @media only screen /* Samsung galaxy S8 */
     and (min-width: 360px)
@@ -456,6 +459,9 @@ and (orientation : portrait) {
             position: absolute !important;
             bottom: 0 !important;
             margin: 5px 35% !important;
+        }
+        .navbar-nav .nav-link {
+            padding-top: .1rem !important;
         }
     }
 
