@@ -244,6 +244,7 @@ footer img {
 .modal-title:hover {
     color: #c4191e !important;
     text-decoration: none;
+    margin-bottom: .9rem;
 }
 .modal-content {
     border-radius: 0 !important;
