@@ -495,5 +495,11 @@ and (orientation : portrait) {
     .justify {
         text-align: justify !important;
     }
+    .pad {
+        font-size: .65rem !important;
+    }
+    .pad-2 {
+        font-size: .8rem !important;
+    }
 }
 
