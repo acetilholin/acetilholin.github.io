@@ -393,6 +393,9 @@ and (orientation : portrait) {
         background: rgba(0,0,0,0.99) !important;
         transition: background-color 1s ease 0s;
     }
+    .justify {
+        text-align: justify !important;
+    }
     .mobile-title {
         font-size: 27px !important;
     }
@@ -440,6 +443,9 @@ and (orientation : portrait) {
             color: #ed1c24;
             padding-top: .8rem;
         }
+        .justify {
+            text-align: justify !important;
+        }
         .navbar-nav .nav-link.active,
         .navbar-nav .nav-link:hover {
             color: #586168;
@@ -465,4 +471,29 @@ and (orientation : portrait) {
             padding-top: .1rem !important;
         }
     }
+
+/* iPad */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+    .feature h3 {
+        font-size: 1.3rem;
+    }
+    .feature p {
+        font-size: .9rem;
+    }
+    .card-body h4 {
+        font-size: 1.2rem;
+    }
+    .card-body h5 {
+        font-size: 1rem;
+    }
+    .card-body p {
+        font-size: 1rem;
+    }
+    .justify {
+        text-align: justify !important;
+    }
+}
 

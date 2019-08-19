@@ -6,7 +6,7 @@ $(document).ready(function() {
         } else {
             $('.navbar').removeClass('solid');
         }
-        if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/Android/i)) {
+        if (navigator.userAgent.match(/i(Phone|Pad)/i) || navigator.userAgent.match(/Android/i)) {
             if ($(this).scrollTop() > 5) {
                 $('.navbar').addClass('solid');
             } else {
