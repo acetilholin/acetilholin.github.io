@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30d5d187-ca49-4f22-baf1-3ca72b40a0e8" name="Default Changelist" comment="">
+    <list default="true" id="30d5d187-ca49-4f22-baf1-3ca72b40a0e8" name="Default Changelist" comment="Content changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -106,7 +106,8 @@
       <workItem from="1566319466702" duration="113000" />
       <workItem from="1566836407833" duration="1128000" />
       <workItem from="1567868094938" duration="2350000" />
-      <workItem from="1569604661836" duration="234000" />
+      <workItem from="1569604661836" duration="429000" />
+      <workItem from="1570029511100" duration="26000" />
     </task>
     <servers />
   </component>
@@ -128,5 +129,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Content changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Content changes" />
   </component>
 </project>
