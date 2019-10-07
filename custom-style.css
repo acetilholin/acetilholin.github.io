@@ -301,6 +301,12 @@ footer .form-check-input {
     color: #c4191e;
 }
 
+/* language select */
+.lang-title {
+    font-size: 19px;
+    margin-top: 1rem;
+}
+
 /* ribbon */
 .ribbon {
     position: absolute;

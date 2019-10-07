@@ -1,7 +1,6 @@
-
-$(document).ready(function() {
-    $(window).scroll(function() {
-        if($(this).scrollTop() > 300) {
+$(document).ready(function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
             $('.navbar').addClass('solid');
         } else {
             $('.navbar').removeClass('solid');
@@ -26,16 +25,40 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
 
-$(document).ready(function(){
-    $("a").on('click', function(event) {
+    const cookieExists = Cookies.get('USER_LNG');
+    let eng = 'https://acetilholin.github.io/en/';
+
+    if (cookieExists) {
+        if (cookieExists === 'ENG' && window.location.href !== eng) {
+            window.location = eng;
+        }
+    } else {
+        $('#languageSelect').modal('show');
+        $("#langEN").click(function () {
+            Cookies.set('USER_LNG', 'ENG', {expires: 365});
+            $('#languageSelect').modal('hide');
+            window.location = eng;
+        });
+
+        $("#langSI").click(function () {
+            Cookies.set('USER_LNG', 'SI', {expires: 365});
+            $('#languageSelect').modal('hide');
+        });
+    }
+});
+
+
+$(document).ready(function () {
+    $("a").on('click', function (event) {
         if (this.hash !== "") {
             event.preventDefault();
             var hash = this.hash;
 
             $('html, body').animate({
                 scrollTop: $(hash).offset().top
-            }, 800, function(){
+            }, 800, function () {
                 window.location.hash = hash;
             });
         }
@@ -43,28 +66,28 @@ $(document).ready(function(){
 });
 
 
-$(document).ready(function(){
-    $(window).scroll(function(){
+$(document).ready(function () {
+    $(window).scroll(function () {
         $(".arrow").css("opacity", 1 - $(window).scrollTop() / 250);
     });
 });
 
 
-$(document).ready(function(){
+$(document).ready(function () {
     $("#cars-in-offer").owlCarousel({
-            items:3,
-            autoplay:true,
-            smartSpeed:900,
-            loop:true,
-            autoplayHoverPause:true,
-            responsive : {
-                0 : {
+            items: 3,
+            autoplay: true,
+            smartSpeed: 900,
+            loop: true,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
                     items: 1,
                 },
-                576 : {
+                576: {
                     items: 2,
                 },
-                768 : {
+                768: {
                     items: 3
                 }
             }
@@ -73,7 +96,7 @@ $(document).ready(function(){
 });
 
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('.counter').counterUp({
         delay: 10,
         time: 1800
@@ -81,19 +104,19 @@ $(document).ready(function() {
 });
 
 
-$(document).ready(function(){
+$(document).ready(function () {
     $("#cars-in-offer").owlCarousel({
-            items:3,
-            autoplay:true,
-            smartSpeed:1700,
-            loop:true,
-            autoplayHoverPause:true,
-            responsive : {
-                0 : {
+            items: 3,
+            autoplay: true,
+            smartSpeed: 1700,
+            loop: true,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
                     items: 1
                 },
 
-                576 : {
+                576: {
                     items: 2
                 },
                 768: {
@@ -104,8 +127,8 @@ $(document).ready(function(){
     );
 });
 
-$(document).ready(function() {
-    $(window).scroll(function() {
+$(document).ready(function () {
+    $(window).scroll(function () {
         if ($(this).scrollTop() > 500) {
             $('.top-scroll').fadeIn();
         } else {
