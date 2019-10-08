@@ -25,7 +25,7 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
+/*$(document).ready(function () {
 
     const cookieExists = Cookies.get('USER_LNG');
     let eng = 'https://acetilholin.github.io/en/';
@@ -47,24 +47,17 @@ $(document).ready(function () {
             $('#languageSelect').modal('hide');
         });
     }
-});
-
+});*/
 
 $(document).ready(function () {
-    $("a").on('click', function (event) {
-        if (this.hash !== "") {
-            event.preventDefault();
-            var hash = this.hash;
-
-            $('html, body').animate({
-                scrollTop: $(hash).offset().top
-            }, 800, function () {
-                window.location.hash = hash;
-            });
+    $('#changeLanguage').on('change', function () {
+        var url = $(this).val();
+        if (url) {
+            window.location = url;
         }
+        return false;
     });
 });
-
 
 $(document).ready(function () {
     $(window).scroll(function () {

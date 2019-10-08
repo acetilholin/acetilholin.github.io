@@ -23,6 +23,9 @@ body {
 [class*="col-"] {
     padding: 1rem;
 }
+.lang-m-show {
+    display: none;
+}
 
 /* Navbar */
 
@@ -56,6 +59,38 @@ body {
     background: rgba(0,0,0,0.99) !important;
     transition: background-color 2s ease 0s;
 }
+
+span.nav-link{
+    padding-top: 5px !important;
+}
+select.form-control.language:focus {
+    box-shadow: none;
+}
+
+.transparent-button {
+    color: #ed1c24;
+}
+.transparent-button:focus {
+    box-shadow: none;
+}
+.dropdown-menu {
+    background-color: transparent;
+    border:none !important;
+}
+.custom-color:hover {
+    color: #ed1c24;
+    background: none;
+}
+
+.custom-color {
+    color: white;
+    font-weight: 700;
+    letter-spacing: .1rem;
+}
+.custom-item {
+    margin-top: -1rem !important;
+}
+
 /* Landing page */
 .home-inner {
     background-image: url("img/image-mobile.png");
@@ -287,6 +322,7 @@ hr.socket {
 footer .form-check-input {
     margin-left: 0;
 }
+
 /* Scroller */
 .scroller {
     color: #ed1c24;
@@ -388,6 +424,12 @@ and (orientation : portrait) {
         position: absolute !important;
         bottom: 0 !important;
         margin: 5px 35% !important;
+    }
+    .lang-m-hide {
+        display: none;
+    }
+    .lang-m-show {
+        display: block;
     }
 }
 
