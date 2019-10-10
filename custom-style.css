@@ -68,11 +68,16 @@ select.form-control.language:focus {
 }
 
 .transparent-button {
-    color: #ed1c24;
+    color: #586168;
 }
 .transparent-button:focus {
     box-shadow: none;
+
 }
+.transparent-button:hover {
+    color: #ed1c24;
+}
+
 .dropdown-menu {
     background-color: transparent;
     border:none !important;
@@ -475,6 +480,12 @@ and (orientation : portrait) {
     .navbar-nav .nav-link {
         padding-top: .1rem !important;
     }
+    .lang-m-hide {
+        display: none;
+    }
+    .lang-m-show {
+        display: block;
+    }
 }
     @media only screen /* Samsung galaxy S8 */
     and (min-width: 360px)
@@ -518,6 +529,12 @@ and (orientation : portrait) {
         .navbar-nav .nav-link {
             padding-top: .1rem !important;
         }
+        .lang-m-hide {
+            display: none;
+        }
+        .lang-m-show {
+            display: block;
+        }
     }
 
 /* iPad */
@@ -548,6 +565,12 @@ and (orientation : portrait) {
     }
     .pad-2 {
         font-size: .8rem !important;
+    }
+    .lang-m-hide {
+        display: none;
+    }
+    .lang-m-show {
+        display: block;
     }
 }
 
