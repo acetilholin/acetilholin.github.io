@@ -244,6 +244,17 @@ h3.heading {
     background: #ed1c24 !important;
 }
 /* calculation */
+.form-control:focus {
+    border-color: #ed1c24;
+    box-shadow: 0 0 0 0.2rem rgba(237, 28, 36, 0.25);
+}
+.custom-select:focus {
+    border-color: #ed1c24;
+    box-shadow: 0 0 0 0.2rem rgba(237, 28, 36, 0.25);
+}
+.bootstrap-select{
+    border: 1px solid red
+}
 .alert {
     border-radius: 0 !important;
 }
