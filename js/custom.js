@@ -121,15 +121,6 @@ $(function () {
 
 /* Sending message function */
 $(function () {
-    $("#send-email").prop("disabled", true);
-    var checkbox = $("#checkbox-robot");
-    checkbox.click(function () {
-        if ($(this).is(":checked")) {
-            $("#send-email").prop("disabled", false)
-        } else {
-            $("#send-email").prop("disabled", true)
-        }
-    });
     $("#email").submit(function (e) {
         e.preventDefault();
         var form_data = $(this).serialize();

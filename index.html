@@ -486,24 +486,29 @@
                 <form id="email" action="">
                     <div class="col-md-8 mb-2 form-group">
                         <label for="name-surname">Ime in priimek</label>
-                        <input type="text" class="form-control" id="name-surname" name="fullname" aria-describedby="emailHelp" placeholder="Ime in priimek">
+                        <input type="text" class="form-control" id="name-surname"  v-bind:class="{ 'is-invalid': nameSurnameValid }" name="fullname" aria-describedby="emailHelp" placeholder="Ime in priimek" v-model="fullname" required>
+                        <div class="invalid-feedback">
+                            Vpišite ime in priimek
+                        </div>
                     </div>
                     <div class="col-md-8 mb-2 form-group">
                         <label for="email-label">Email</label>
-                        <input type="text" class="form-control" id="email-label" name="email" aria-describedby="emailHelp" placeholder="Email">
+                        <input type="email" class="form-control" id="email-label" v-bind:class="{ 'is-invalid': emailValid }" name="email" aria-describedby="emailHelp" placeholder="Email" v-model="email" required>
+                        <div class="invalid-feedback">
+                            Vpišite email naslov
+                        </div>
                     </div>
                     <div class="col-md-8 mb-2 form-group">
                         <label for="textarea">Sporočilo</label>
-                        <textarea class="form-control" id="textarea" name="message" rows="3" placeholder="Sporočilo"></textarea>
+                        <textarea class="form-control" id="textarea" v-bind:class="{ 'is-invalid': messageValid }" name="message" rows="3" placeholder="Sporočilo" v-model="message" required></textarea>
+                        <div class="invalid-feedback">
+                            Vpišite sporočilo
+                        </div>
                     </div>
                     <div class="col-md-8 mb-2 form-group">
                         <div id="status-message"></div>
                     </div>
-                    <div class="input-group form-check custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" name="remember"  id="checkbox-robot">
-                        <label class="custom-control-label" for="checkbox-robot">Nisem robot</label>
-                    </div>
-                    <button type="submit" class="btn btn-calculate" id="send-email">Pošlji</button>
+                    <button type="submit" class="btn btn-calculate" id="send-email" @click="validate()">Pošlji</button>
                 </form>
             </div>
             <a href="#home"><i class="far fa-arrow-alt-circle-up fa-2x scroller"></i></a>
@@ -515,6 +520,24 @@
 </body>
 </html>
 <script>
+
+    var validate = new Vue({
+       el: '#email',
+       data() {
+           return {
+               message: '', email: '', fullname: '',
+               nameSurnameValid: '', emailValid:'', messageValid: ''
+           }
+       },
+       methods: {
+           validate: function() {
+            this.nameSurnameValid = this.fullname === '';
+            this.emailValid = this.email === '';
+            this.messageValid = this.message === '';
+           }
+       }
+    });
+
     var calc = new Vue({
         el: '#calculation',
         data(){
