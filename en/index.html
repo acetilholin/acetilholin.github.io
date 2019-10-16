@@ -521,7 +521,7 @@
         el: '#calculation',
         data(){
             return {
-                priceGross:0, priceNett: 0,
+                priceGross:0, priceNett: 0, provision: 450,
                 price: 0, endPrice: 0,
                 fuel: '',
                 euroEngine: 0,
@@ -648,7 +648,7 @@
                 this.znesekDavka = Math.round((this.stopnjaDavka / 100) * this.endPrice, 0);
                 this.stopnjaPribitka = ccmPoints;
                 this.znesekPribitka = Math.round(this.endPrice * (this.stopnjaPribitka / 100), 0);
-                this.skupajDavek = parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts;
+                this.skupajDavek = parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.provision;
 
                 this.carPrice = this.price === 0;
                 this.carFuel = this.fuel === '';

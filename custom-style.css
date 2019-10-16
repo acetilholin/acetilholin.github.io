@@ -244,6 +244,12 @@ h3.heading {
     background: #ed1c24 !important;
 }
 /* calculation */
+
+.custom-control-input:checked~.custom-control-label::before {
+    background: #ed1c24;
+    border-color: #ed1c24;
+}
+
 .form-control:focus {
     border-color: #ed1c24;
     box-shadow: 0 0 0 0.2rem rgba(237, 28, 36, 0.25);
