@@ -653,14 +653,9 @@
                     step3 = step2 + emissionPoints;
                 }
 
-
-
                 this.endPrice = this.price;
                 if (this.priceType === false) {
-                    console.log('location'+this.location)
-                    console.log('price before'+this.price)
                     this.endPrice = Math.round((parseInt(this.price) * 0.22) + parseInt(this.price),0);
-                    console.log('price after'+this.endPrice)
                 }
 
                 this.stopnjaDavka = step3 + this.dizelTrdiDelci;
