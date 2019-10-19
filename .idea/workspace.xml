@@ -29,7 +29,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../aw-cms" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -123,7 +123,7 @@
       <workItem from="1571143715368" duration="2384000" />
       <workItem from="1571210279483" duration="10011000" />
       <workItem from="1571402063200" duration="27000" />
-      <workItem from="1571492494256" duration="3590000" />
+      <workItem from="1571492494256" duration="4950000" />
     </task>
     <servers />
   </component>
