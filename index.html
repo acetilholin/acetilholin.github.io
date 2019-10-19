@@ -35,10 +35,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<!-- cookies -->
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-
-
 <!-- JS -->
 <script src="js/custom.js"></script>
 <script src="js/jquery.counterup.js"></script>
@@ -423,6 +419,8 @@
                                 Stopnja pribitka: {{ stopnjaPribitka }}%<br>
                                 Znesek pribitka: {{ znesekPribitka }}€<br>
                                 Strošek transporta: {{ transportCosts }}€ + DDV<br>
+                                Homologacija: {{ homologacija }}€<br>
+                                Ostali stroški: {{ otherExpenses }}€
                             </p>
                             <hr>
                             <p class="mb-0">
@@ -542,7 +540,7 @@
         el: '#calculation',
         data(){
             return {
-                priceGross:0, priceNett: 0, provision: 450,
+                priceGross:0, priceNett: 0, provision: 490, otherExpenses: 100, homologacija: 102,
                 price: 0, endPrice: 0,
                 fuel: '',
                 euroEngine: 0,
@@ -656,20 +654,20 @@
                 }
 
 
+
                 this.endPrice = this.price;
-                if (this.priceType === true) {
-                    if (this.value < 8) {
-                        this.endPrice = Math.round((parseInt(this.price) * 0.19) + parseInt(this.price),0);
-                    } else {
-                        this.endPrice = Math.round((parseInt(this.price) * 0.19) + parseInt(this.price), 0);
-                    }
+                if (this.priceType === false) {
+                    console.log('location'+this.location)
+                    console.log('price before'+this.price)
+                    this.endPrice = Math.round((parseInt(this.price) * 0.22) + parseInt(this.price),0);
+                    console.log('price after'+this.endPrice)
                 }
 
                 this.stopnjaDavka = step3 + this.dizelTrdiDelci;
                 this.znesekDavka = Math.round((this.stopnjaDavka / 100) * this.endPrice, 0);
                 this.stopnjaPribitka = ccmPoints;
                 this.znesekPribitka = Math.round(this.endPrice * (this.stopnjaPribitka / 100), 0);
-                this.skupajDavek = parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.provision;
+                this.skupajDavek = parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.provision + this.homologacija + this.otherExpenses;
 
                 this.carPrice = this.price === 0;
                 this.carFuel = this.fuel === '';

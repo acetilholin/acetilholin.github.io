@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/en/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/en/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sendEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/sendEmail.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +122,9 @@
       <workItem from="1570557190841" duration="1257000" />
       <workItem from="1570717533413" duration="1361000" />
       <workItem from="1571143715368" duration="2384000" />
-      <workItem from="1571210279483" duration="9182000" />
+      <workItem from="1571210279483" duration="10011000" />
+      <workItem from="1571402063200" duration="27000" />
+      <workItem from="1571492494256" duration="2824000" />
     </task>
     <servers />
   </component>
