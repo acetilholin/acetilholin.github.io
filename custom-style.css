@@ -249,6 +249,9 @@ h3.heading {
     background: #ed1c24;
     border-color: #ed1c24;
 }
+.choosen{
+    color: #ed1c24;
+}
 
 .form-control:focus {
     border-color: #ed1c24;

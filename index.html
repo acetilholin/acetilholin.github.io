@@ -306,7 +306,9 @@
                                 <div class="col-sm-9">
                                     <div class="custom-control custom-switch" id="test1">
                                         <input type="checkbox" class="custom-control-input" id="grossnett" v-model="priceType">
-                                        <label class="custom-control-label" for="grossnett">Neto / Bruto </label>
+                                        <label class="custom-control-label" for="grossnett">
+                                            <span v-if="priceType" class="choosen">Bruto</span>
+                                            <span v-else class="choosen">Neto</span></label>
                                     </div>
                                 </div>
                             </div>
