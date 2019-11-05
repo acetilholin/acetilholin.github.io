@@ -124,7 +124,8 @@ $(function () {
     $("#email").submit(function (e) {
         e.preventDefault();
         var form_data = $(this).serialize();
-        $.ajax({type: "POST", url: "sendEmail.php", dataType: "json", data: form_data}).done(function (data) {
+        $.ajax({type: "POST",
+            url: "sendEmail.php", dataType: "json", data: form_data}).done(function (data) {
             $("#status-message").append("<div class='alert alert-success alert-dismissible fade show text-center' role='alert'>Sporočilo je bilo poslano!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>")
         }).fail(function (data) {
             $("#status-message").append("<div class='alert alert-danger alert-dismissible fade show text-center' role='alert'>Napaka pri pošiljanju!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div></div>")
